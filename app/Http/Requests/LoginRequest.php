@@ -27,8 +27,8 @@ class LoginRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email|max:100',
-            'password' => 'required|string|min:6',
+            'email' => 'bail|required|string|email|max:100',
+            'password' => 'bail|required|string|min:6',
         ];
 
     }

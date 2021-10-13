@@ -26,9 +26,10 @@ class IpTableRequest extends RequestAbstract
      */
     public function rules(): array
     {
+
         return [
-            'ip_address' => 'required|string|ip|max:20|unique:ip_tables',
-            'ip_label' => 'required|string|min:2|max:200',
+            'ip_address' => 'bail|required|string|ip|max:20|unique:ip_tables,ip_address,'.$this->id,
+            'ip_label' => 'bail|required|string|min:2|max:200',
         ];
 
     }
