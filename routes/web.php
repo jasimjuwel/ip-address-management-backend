@@ -24,6 +24,14 @@ $router->group(['middleware' => 'auth', 'prefix' => 'api'], function ($router) {
     $router->get('profile', 'AuthController@profile');
     $router->post('logout', 'AuthController@logout');
 
+    $router->post('ip-store', 'IpTableController@store');
+    $router->get('ip-list', 'IpTableController@index');
+    $router->get('ip-show/{id}', 'IpTableController@show');
+    $router->get('ip-edit/{id}', 'IpTableController@edit');
+    $router->put('ip-update/{id}', 'IpTableController@update');
+    $router->delete('ip-delete/{id}', 'IpTableController@delete');
+
+    $router->get('audit-log-list', 'AuditLogController@index');
 });
 
 
