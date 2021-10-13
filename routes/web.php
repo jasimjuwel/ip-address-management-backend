@@ -14,3 +14,19 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('login', 'AuthController@login');
+});
+
+$router->group(['middleware' => 'auth', 'prefix' => 'api'], function ($router) {
+    $router->get('profile', 'AuthController@profile');
+    $router->post('logout', 'AuthController@logout');
+
+});
+
+
+$router->group(['namespace' => '\Rap2hpoutre\LaravelLogViewer'], function () use ($router) {
+    $router->get('logs', 'LogViewerController@index');
+});
