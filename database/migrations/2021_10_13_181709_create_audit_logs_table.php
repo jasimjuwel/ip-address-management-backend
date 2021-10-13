@@ -15,12 +15,12 @@ class CreateAuditLogsTable extends Migration
     {
         Schema::create('audit_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_table',200);
-            $table->integer('reference_id')->unsigned();;
-            $table->string('event_type',200);
-            $table->text('request_body',200);
-            $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->dateTime('log_time');
+            $table->string('request_path',200)->nullable();
+            $table->integer('request_id')->nullable();
+            $table->string('post_json',200)->nullable();
+            $table->text('final_response')->nullable();
+            $table->text('request_ip')->nullable();
             $table->timestamps();
         });
     }

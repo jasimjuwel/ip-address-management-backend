@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as IlluminateResponse;
 use App\Http\Controllers\Controller;
+Use App\Traits\AuditLogWrite;
 
 class ApiBaseController extends Controller
 {
+    /**
+     * To write Request/Response Log
+     */
+    use AuditLogWrite;
 
     /**
      * @var int
@@ -60,6 +65,7 @@ class ApiBaseController extends Controller
      */
     public function response($data, $headers = [])
     {
+        $this->logActivity($data);
 
         return response()->json($data, $this->getStatusCode(), $headers);
     }

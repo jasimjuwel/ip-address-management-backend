@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends ApiBaseController
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
+        parent::__construct($request);
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 

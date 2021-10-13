@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Pearl\RequestValidate\RequestAbstract;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\ValidationException;
+use Pearl\RequestValidate\RequestAbstract;
 
-class LoginRequest extends RequestAbstract
+class IpTableRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,8 @@ class LoginRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'email' => 'required|string|email|max:100',
-            'password' => 'required|string|min:6',
+            'ip_address' => 'required|string|ip|max:20|unique:ip_tables',
+            'ip_label' => 'required|string|min:2|max:200',
         ];
 
     }
@@ -44,6 +44,7 @@ class LoginRequest extends RequestAbstract
 
         throw new HttpResponseException(validationErrorResponse($validator->errors()));
     }
+
     /**
      * Get custom messages for validator errors.
      *
@@ -55,5 +56,4 @@ class LoginRequest extends RequestAbstract
             //
         ];
     }
-
 }
