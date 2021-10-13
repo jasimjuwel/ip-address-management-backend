@@ -25,7 +25,7 @@ class IpTableController extends ApiBaseController
     }
 
     /**
-     * Get product List.
+     * Get IP List.
      *
      * @param Request $request
      * @return JsonResponse
@@ -33,11 +33,11 @@ class IpTableController extends ApiBaseController
     public function index()
     {
         try {
-            $ipList = $this->ip_table->orderBy('id', 'desc')->get();
+            $ipList = $this->ip_table->orderBy('id', 'desc')->limit(100)->get();
 
             $this->response = [
                 'status' => true,
-                'message' => 'Product List',
+                'message' => 'IP List',
                 'data' => new IpsResource($ipList),
             ];
 
@@ -139,7 +139,6 @@ class IpTableController extends ApiBaseController
     {
         try {
             $ipData = $this->ip_table->findOrFail($id);
-            $ipData->ip_address = $request->ip_address;
             $ipData->ip_label = $request->ip_label;
             $ipData->save();
 

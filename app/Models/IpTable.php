@@ -12,4 +12,9 @@ class IpTable extends Model
     protected $fillable = [
         'ip_number', 'ip_address', 'created_by', 'updated_by'
     ];
+
+    public function getCreatedAtAttribute()
+    {
+        return dateTimeConvertDBtoForm($this->attributes['created_at']);
+    }
 }

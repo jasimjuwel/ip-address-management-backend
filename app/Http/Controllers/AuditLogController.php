@@ -30,7 +30,7 @@ class AuditLogController extends ApiBaseController
     public function index()
     {
         try {
-            $auditList = $this->audit_log->orderBy('id', 'desc')->get();
+            $auditList = $this->audit_log->orderBy('id', 'desc')->limit(100)->get();
 
             $this->response = [
                 'status' => true,
