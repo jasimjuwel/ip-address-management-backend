@@ -43,5 +43,5 @@ IP Address Management Solution
 - Pass : 123456
 
 ## Note:
-- Please let me know, if I can help you.
+- Please Let me know if you have any queries.
 - I apologize if i am missing any test requirement.
