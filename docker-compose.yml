@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    ports:
+      - "3305:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: rootp
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8070:80"
+    depends_on:
+      - db
+  app:
+    build:
+      context: .
+      dockerfile: .docker/apache2/Dockerfile
+      args:
+        uid: ${UID}
+    working_dir: /var/www/html
+    environment:
+      - APACHE_RUN_USER=#${UID}
+      - APACHE_RUN_GROUP=#${UID}
+    ports:
+      - "8060:80"
+      - "444:443"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db

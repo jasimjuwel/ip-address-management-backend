@@ -8,7 +8,8 @@
 IP Address Management Solution
 
 ## What's included
-* [Lumen 8](https://lumen.laravel.com/docs/8.x)
+* [PHP 7.2.5](https://lumen.laravel.com/docs/8.x)
+* [Lumen 7.0](https://lumen.laravel.com/docs/8.x)
 * [Lumen config discover](https://github.com/chuckrincon/lumen-config-discover)
 * [pearl/lumen-request-validate](https://packagist.org/packages/pearl/lumen-request-validate)
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) (to seee log base_url/logs)
@@ -20,22 +21,27 @@ IP Address Management Solution
 * Copy `.env.example` to `.env`
 * Configure `.env`
 * Run `composer install --no-scripts`
+* Run `php artisan jwt:secret`
 * Run `php artisan cache:clear`
 * Run `php artisan key:generate`
 * Run `php artisan view:clear`
 * Run `php artisan route:clear`
 * Run `composer dump-autoload -o`
-* Run `php artisan migrate`. Database will be created:
+* Run `php artisan migrate`. Database will be created
+* Run `php artisan db:seed`. User will be created
 * View the site by
-    * Either running `php artisan serve` if you are not using vagrant homestead or laravel valet (in a new terminal/command prompt)
-    * Otherwise go to your local dev url configured in vagrant
-
+    * Either running `php artisan serve` (in a new terminal/command prompt)
+    * Otherwise go to DOCKER_README.md for running the application in docker
 ## Instruction:
-*  `Postman collection`
+* `Postman collection`
 
-        Postman collection added in project public folder
+        Postman collection & environment varriable added in project public/postman_collection folder
+        Database script added in project public/DB folder
 
+## Credintials:
+- User : take any user's email from users table
+- Pass : 123456
 
 ## Note:
-
-I tried to follow the best practices, but any suggestion, modification is highly appreciated.
+- Please let me know, if I can help you.
+- I apologize if i am missing any test requirement.
